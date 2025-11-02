@@ -1,0 +1,1 @@
+export const BASE_URL = import.meta.env.VITE_API_URL || 'http://192.168.100.22:3000/api'
