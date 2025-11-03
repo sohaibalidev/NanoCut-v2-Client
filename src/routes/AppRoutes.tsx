@@ -1,14 +1,14 @@
 import React from 'react';
+import GuestRoute from './GuestRoute';
+import PrivateRoute from './PrivateRoute';
 import { Routes, Route } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
-import PrivateRoute from './PrivateRoute';
-import GuestRoute from './GuestRoute';
-import Home from '@/pages/Home/Home';
-import Auth from '@/pages/Auth/Auth';
-import Verify from '@/pages/Verify/Verify';
-import Dashboard from '@/pages/Dashboard/Dashboard';
-import Loader from '@/components/Loader/Loader';
-import UrlRedirect from '@/pages/UrlRedirect/UrlRedirect';
+import Loader from '@/components/Loader';
+import Home from '@/pages/Home/';
+import Auth from '@/pages/Auth/';
+import Verify from '@/pages/Verify/';
+import Dashboard from '@/pages/Dashboard/';
+import UrlRedirect from '@/pages/UrlRedirect/';
 
 const AppRoutes: React.FC = () => {
     const { loading } = useAuth();

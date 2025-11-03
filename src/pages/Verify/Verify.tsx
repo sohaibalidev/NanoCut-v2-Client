@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '@/context/AuthContext'
 import { ArrowLeft, Check, X } from 'lucide-react'
-import Loader from '@/components/Loader/Loader'
+import Loader from '@/components/Loader'
 import styles from './Verify.module.css'
 
 const Verify: React.FC = () => {

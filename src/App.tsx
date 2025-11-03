@@ -1,25 +1,28 @@
+import React from 'react';
 import AppRoutes from './routes/AppRoutes';
-// import useOnlineStatus from '@/hooks/useOnlineStatus';
-// import useServerStatus from '@/hooks/useServerStatus';
-// import OfflineScreen from '@/components/OfflineScreen';
-// import ServerDownScreen from '@/components/ServerDownScreen';
+import useOnlineStatus from '@/hooks/useOnlineStatus';
+import useServerStatus from '@/hooks/useServerStatus';
+import OfflineScreen from '@/components/OfflineScreen';
+import ServerDownScreen from '@/components/ServerDownScreen';
 import ContextProvider from './context/ContextProvider';
 import './styles/app.css';
 
-export default function App(): React.ReactElement {
-  // const isOnline = useOnlineStatus();
-  // const { isServerOnline, isChecking, checkServerStatus } = useServerStatus();
+const App: React.FC = () => {
+    const isOnline = useOnlineStatus();
+    const { isServerOnline, isChecking, checkServerStatus } = useServerStatus();
 
-  // if (!isOnline) return <OfflineScreen />;
+    if (!isOnline) return <OfflineScreen />;
 
-  // if (isServerOnline === null) return null;
+    if (isServerOnline === null) return null;
 
-  // if (!isServerOnline)
-  //     return <ServerDownScreen retry={checkServerStatus} isChecking={isChecking} />;
+    if (!isServerOnline)
+        return <ServerDownScreen retry={checkServerStatus} isChecking={isChecking} />;
 
-  return (
-    <ContextProvider>
-      <AppRoutes />
-    </ContextProvider>
-  );
-}
+    return (
+        <ContextProvider>
+            <AppRoutes />
+        </ContextProvider>
+    );
+};
+
+export default App;

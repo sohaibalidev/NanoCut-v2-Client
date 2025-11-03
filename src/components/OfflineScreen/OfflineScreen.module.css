@@ -1,0 +1,92 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: var(--dark-bg);
+}
+
+.statusCard {
+    background: var(--dark-card);
+    padding: 3rem 2.5rem;
+    text-align: center;
+    max-width: 480px;
+    width: 100%;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.statusCard:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(212, 175, 55, 0.2);
+}
+
+.statusIcon {
+    margin-bottom: 1.5rem;
+    color: var(--error);
+}
+
+.statusTitle {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text);
+    background: linear-gradient(135deg, var(--text), var(--text-light));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.statusDescription {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.retryButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    background: var(--primary-accent);
+    color: var(--primary-color);
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--gold-glow);
+}
+
+.retryButton:hover {
+    background: var(--primary-accent-hover);
+}
+
+@media (max-width: 768px) {
+    .statusCard {
+        padding: 2.5rem 2rem;
+        margin: 1rem;
+    }
+
+    .statusTitle {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .statusCard {
+        padding: 2rem 1.5rem;
+    }
+
+    .statusTitle {
+        font-size: 1.4rem;
+    }
+
+    .statusIcon {
+        width: 56px;
+        height: 56px;
+    }
+}
