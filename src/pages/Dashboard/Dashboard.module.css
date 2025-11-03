@@ -73,7 +73,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.25rem;
+    padding: 0.81rem 1.25rem;
     background: transparent;
     color: var(--text-light);
     border: 1px solid var(--border-color);
@@ -361,7 +361,7 @@
     font-size: 1.125rem;
     font-weight: 600;
     color: var(--text);
-    margin: 0 0 0.5rem 0;
+    margin: auto 0;
     word-break: break-all;
 }
 
@@ -571,4 +571,117 @@
 :root {
     --error: #ef4444;
     --success: #22c55e;
+}
+
+.urlTitleRow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.urlStatus {
+    margin: auto 0;
+    flex-shrink: 0;
+}
+
+.statusBadge {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.statusActive {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--success);
+    border: 1px solid var(--success);
+}
+
+.statusInactive {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--error);
+    border: 1px solid var(--error);
+}
+
+.toggleContainer {
+    display: flex;
+    margin-right: 0.5rem;
+    align-items: center;
+}
+
+.toggleLabel {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.toggleInput {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.toggleSlider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--error);
+    transition: 0.4s;
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+}
+
+.toggleSlider:before {
+    position: absolute;
+    content: '';
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.toggleInput:checked + .toggleSlider {
+    background-color: var(--success);
+}
+
+.toggleInput:checked + .toggleSlider:before {
+    transform: translateX(20px);
+}
+
+.toggleInput:focus + .toggleSlider {
+    box-shadow: 0 0 1px var(--primary-accent);
+}
+
+.urlActions {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .urlTitleRow {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .urlActions {
+        align-self: stretch;
+        justify-content: space-between;
+    }
+
+    .toggleContainer {
+        order: -1;
+    }
 }

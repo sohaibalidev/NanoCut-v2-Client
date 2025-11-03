@@ -145,6 +145,27 @@ export const useDashboard = () => {
         }
     };
 
+    const handleToggle = async (id: string) => {
+        try {
+            const response = await urlAPI.toggleUrl(id);
+            if (response.success) {
+                setUrls((prev) =>
+                    prev.map((url) =>
+                        url.id === id ? { ...url, isActive: response.data.isActive } : url
+                    )
+                );
+                setSuccess(
+                    `URL ${response.data.isActive ? 'activated' : 'deactivated'} successfully`
+                );
+                setTimeout(() => setSuccess(null), 2000);
+            }
+        } catch (error: any) {
+            console.error('Failed to toggle URL:', error);
+            setError(error.message || 'Failed to toggle URL status');
+            setTimeout(() => setError(null), 2000);
+        }
+    };
+
     const handleCopy = (shortUrl: string) => {
         navigator.clipboard.writeText(shortUrl);
         setSuccess('URL copied to clipboard!');
@@ -199,6 +220,7 @@ export const useDashboard = () => {
         handleLogout,
         handleThemeToggle,
         handleSubmit,
+        handleToggle,
         handleCopy,
         handleDelete,
         getFullShortUrl,

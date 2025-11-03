@@ -8,7 +8,7 @@ export interface ShortUrl {
     expiresAt: string;
     clicks: number;
     createdAt: string;
-    isActive: boolean; // Added isActive
+    isActive: boolean; 
 }
 
 export interface CreateShortUrlRequest {
@@ -43,7 +43,6 @@ export interface DeleteUrlResponse {
     message: string;
 }
 
-// NEW: Toggle URL response
 export interface ToggleUrlResponse {
     success: boolean;
     message: string;
@@ -110,7 +109,6 @@ export const urlAPI = {
         return handleResponse<DeleteUrlResponse>(response);
     },
 
-    // NEW: Toggle URL activation
     toggleUrl: async (id: string): Promise<ToggleUrlResponse> => {
         const response = await fetch(`${BASE_URL}/url/${id}/toggle`, {
             method: 'PATCH',

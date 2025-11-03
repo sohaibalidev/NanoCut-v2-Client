@@ -1,6 +1,6 @@
 import React from 'react';
 import GuestRoute from './GuestRoute';
-import PrivateRoute from './PrivateRoute';
+import PrivateRouteWithSEO from './PrivateRouteWithSEO';
 import { Routes, Route } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import Loader from '@/components/Loader';
@@ -41,9 +41,9 @@ const AppRoutes: React.FC = () => {
             <Route
                 path="/dashboard"
                 element={
-                    <PrivateRoute>
+                    <PrivateRouteWithSEO>
                         <Dashboard />
-                    </PrivateRoute>
+                    </PrivateRouteWithSEO>
                 }
             />
         </Routes>

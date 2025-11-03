@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
 import { useShortUrl } from './useShortUrl';
+import { useParams, useNavigate } from 'react-router-dom';
 import { AlertCircle, Link, Loader2 } from 'lucide-react';
+import SEO from '@/components/SEO';
 import styles from './UrlRedirect.module.css';
 
 const UrlRedirect: React.FC = () => {
