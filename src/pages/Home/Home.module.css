@@ -67,6 +67,8 @@
 
 .welcomeText {
     color: var(--text-light);
+    display: flex;
+    flex-direction: column;
     font-size: 0.875rem;
 }
 

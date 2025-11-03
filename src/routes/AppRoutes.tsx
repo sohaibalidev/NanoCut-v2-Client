@@ -1,18 +1,19 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import { useAuth } from '@/context/AuthContext'
-import PrivateRoute from './PrivateRoute'
-import GuestRoute from './GuestRoute'
-import Home from '@/pages/Home/Home'
-import Auth from '@/pages/Auth/Auth'
-import Verify from '@/pages/Verify/Verify'
-import Dashboard from '@/pages/Dashboard/Dashboard'
-import Loader from '@/components/Loader/Loader'
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { useAuth } from '@/context/AuthContext';
+import PrivateRoute from './PrivateRoute';
+import GuestRoute from './GuestRoute';
+import Home from '@/pages/Home/Home';
+import Auth from '@/pages/Auth/Auth';
+import Verify from '@/pages/Verify/Verify';
+import Dashboard from '@/pages/Dashboard/Dashboard';
+import Loader from '@/components/Loader/Loader';
+import UrlRedirect from '@/pages/UrlRedirect/UrlRedirect';
 
 const AppRoutes: React.FC = () => {
-    const { loading } = useAuth()
+    const { loading } = useAuth();
 
-    if (loading) return <Loader />
+    if (loading) return <Loader />;
 
     return (
         <Routes>
@@ -35,6 +36,8 @@ const AppRoutes: React.FC = () => {
                 }
             />
 
+            <Route path="/u/:shortCode" element={<UrlRedirect />} />
+
             <Route
                 path="/dashboard"
                 element={
@@ -44,7 +47,7 @@ const AppRoutes: React.FC = () => {
                 }
             />
         </Routes>
-    )
-}
+    );
+};
 
-export default AppRoutes
+export default AppRoutes;

@@ -3,20 +3,27 @@
     background: var(--dark-bg);
     color: var(--text);
     user-select: none;
-    padding: 0;
 }
 
 .header {
+    background: var(--dark-card);
+    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.headerContent {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    border-bottom: 1px solid var(--border-color);
-    background: var(--dark-card);
-    backdrop-filter: blur(10px);
 }
 
-.logoGroup {
+.brandSection {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
@@ -26,7 +33,10 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--text);
+    background: linear-gradient(135deg, var(--primary-accent), #ffd700);
     background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .userWelcome {
@@ -35,7 +45,7 @@
     font-weight: 500;
 }
 
-.actionButtonGroup {
+.actionsSection {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -79,55 +89,64 @@
     background: rgba(239, 68, 68, 0.1);
 }
 
-.main {
-    max-width: 900px;
+.mainLayout {
+    max-width: 1400px;
     margin: 0 auto;
     padding: 2rem;
-}
-
-.dashboardHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: 380px 1fr;
     gap: 2rem;
+    align-items: start;
 }
 
-.headerContent {
-    flex: 1;
-}
-
-.dashboardTitle {
-    font-size: 2.25rem;
-    font-weight: 700;
-    color: var(--text);
-    margin: 0 0 0.5rem 0;
-    background-clip: text;
-}
-
-.dashboardSubtitle {
-    font-size: 1.125rem;
-    color: var(--text-light);
-    margin: 0;
-    font-weight: 400;
-}
-
-.statsContainer {
+.sidebar {
     display: flex;
-    gap: 1.5rem;
+    flex-direction: column;
+    gap: 2rem;
+    position: sticky;
+    top: 2rem;
 }
 
-.statItem {
+.statsSection {
+    background: var(--dark-card);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+}
+
+.statsTitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 1rem 0;
+}
+
+.statsGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.statCard {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 0.5rem 1.5rem;
-    background: var(--dark-card);
+    padding: 1rem;
+    background: var(--dark-bg);
     border: 1px solid var(--border-color);
-    min-width: 160px;
+    transition: all 0.3s ease;
 }
 
-.statIcon {
+.statCard:hover {
+    border-color: var(--primary-accent);
+}
+
+.statIconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(212, 175, 55, 0.1);
     color: var(--primary-accent);
 }
 
@@ -140,6 +159,7 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--text);
+    line-height: 1;
 }
 
 .statLabel {
@@ -148,34 +168,39 @@
     font-weight: 500;
 }
 
-.urlForm {
-    margin-bottom: 3rem;
+.quickCreateSection {
     background: var(--dark-card);
     border: 1px solid var(--border-color);
-}
-
-.formHeader {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--border-color);
-    background: rgba(212, 175, 55, 0.05);
-    color: var(--primary-accent);
-    font-weight: 600;
-    font-size: 1.125rem;
-}
-
-.formGrid {
-    display: grid;
-    grid-template-columns: 2fr 1.5fr 1fr auto;
-    gap: 1rem;
     padding: 1.5rem;
 }
 
-.urlInput,
-.customInput,
-.expiresSelect {
+.sectionTitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 1.5rem 0;
+}
+
+.quickForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.inputLabel {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+.input,
+.select {
     padding: 0.875rem;
     background: var(--dark-bg);
     border: 1px solid var(--border-color);
@@ -184,28 +209,27 @@
     transition: all 0.3s ease;
 }
 
-.urlInput:focus,
-.customInput:focus,
-.expiresSelect:focus {
+.input:focus,
+.select:focus {
     outline: none;
     border-color: var(--primary-accent);
     box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1);
 }
 
-.urlInput::placeholder,
-.customInput::placeholder {
+.input::placeholder {
     color: var(--text-lighter);
 }
 
-.expiresSelect {
+.select {
     cursor: pointer;
 }
 
-.submitBtn {
+.createButton {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
-    padding: 0.875rem 1.75rem;
+    padding: 1rem;
     background: var(--primary-accent);
     color: var(--dark-bg);
     border: none;
@@ -213,24 +237,72 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    white-space: nowrap;
+    margin-top: 0.5rem;
 }
 
-.submitBtn:hover {
+.createButton:hover:not(:disabled) {
     background: var(--primary-accent-hover);
 }
 
+.createButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.mainContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.messagesSection {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.errorBanner,
+.successBanner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.errorBanner {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid var(--error);
+    color: var(--error);
+}
+
+.successBanner {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid var(--success);
+    color: var(--success);
+}
+
 .urlListSection {
-    margin-top: 2rem;
+    background: var(--dark-card);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
 }
 
 .sectionHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.75rem;
+    padding: 1.5rem;
     border-bottom: 1px solid var(--border-color);
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.sectionTitleGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
 }
 
 .sectionTitle {
@@ -240,45 +312,44 @@
     margin: 0;
 }
 
-.urlCount {
+.sectionSubtitle {
     font-size: 0.875rem;
     color: var(--text-light);
-    font-weight: 500;
-    background: var(--dark-card);
+    margin: 0;
+}
+
+.urlCountBadge {
+    background: var(--primary-accent);
+    color: var(--dark-bg);
     padding: 0.5rem 1rem;
-    border: 1px solid var(--border-color);
+    font-size: 0.875rem;
+    font-weight: 600;
 }
 
 .urlList {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.urlItem {
-    background: var(--dark-card);
+.urlCard {
+    background: var(--dark-bg);
     border: 1px solid var(--border-color);
+    padding: 1.5rem;
     transition: all 0.3s ease;
 }
 
-.urlItem:hover {
+.urlCard:hover {
     border-color: var(--primary-accent);
-    box-shadow: var(--shadow-hover);
 }
 
-.urlContent {
-    padding: 1.75rem;
-}
-
-.urlHeader {
+.urlCardHeader {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 1rem;
     gap: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .urlInfo {
@@ -308,7 +379,7 @@
     flex-shrink: 0;
 }
 
-.iconBtn {
+.actionButton {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -320,45 +391,76 @@
     transition: all 0.3s ease;
 }
 
-.iconBtn:hover {
+.actionButton:hover {
     color: var(--primary-accent);
     border-color: var(--primary-accent);
     background: rgba(212, 175, 55, 0.1);
 }
 
-.deleteBtn:hover {
+.deleteButton:hover {
     color: var(--error);
     border-color: var(--error);
     background: rgba(239, 68, 68, 0.1);
 }
 
 .urlMeta {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
     padding-top: 1rem;
     border-top: 1px solid var(--border-color);
 }
 
-.clicks,
-.expires,
-.shortCodeDisplay,
-.created {
+.metaItem {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     color: var(--text-lighter);
     font-size: 0.75rem;
     font-weight: 500;
-    position: relative;
 }
 
-.clicks svg,
-.expires svg,
-.shortCodeDisplay svg,
-.created svg {
+.metaItem svg {
     color: var(--primary-accent);
+}
+
+.customNameBadge {
+    display: inline-block;
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--primary-accent);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--text-light);
+}
+
+.emptyStateIcon {
+    color: var(--text-lighter);
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.emptyStateTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 0.5rem 0;
+}
+
+.emptyStateDescription {
+    font-size: 0.875rem;
+    margin: 0;
+    max-width: 300px;
 }
 
 .loadingContainer {
@@ -372,7 +474,8 @@
     gap: 1rem;
 }
 
-.spinner {
+.spinner,
+.buttonSpinner {
     animation: spin 1s linear infinite;
     color: var(--primary-accent);
 }
@@ -381,46 +484,44 @@
     0% {
         transform: rotate(0deg);
     }
-
     100% {
         transform: rotate(360deg);
     }
 }
 
-@media (max-width: 768px) {
-    .header {
-        padding: 1.25rem;
-    }
-
-    .main {
-        padding: 1.5rem;
-    }
-
-    .dashboardHeader {
-        flex-direction: column;
+@media (max-width: 1024px) {
+    .mainLayout {
+        grid-template-columns: 1fr;
         gap: 1.5rem;
     }
 
-    .statsContainer {
-        width: 100%;
-        justify-content: space-between;
+    .sidebar {
+        position: static;
     }
 
-    .statItem {
+    .statsGrid {
+        flex-direction: row;
+    }
+
+    .statCard {
         flex: 1;
-        min-width: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .headerContent {
+        padding: 1rem 1.5rem;
     }
 
-    .formGrid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+    .mainLayout {
+        padding: 1.5rem;
     }
 
-    .dashboardTitle {
-        font-size: 2rem;
+    .statsGrid {
+        flex-direction: column;
     }
 
-    .urlHeader {
+    .urlCardHeader {
         flex-direction: column;
         align-items: stretch;
         gap: 1rem;
@@ -431,62 +532,43 @@
     }
 
     .urlMeta {
-        gap: 1rem;
-    }
-
-    .clicks,
-    .shortCodeDisplay,
-    .expires,
-    .created {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .header {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: stretch;
-    }
-
-    .logoGroup {
-        align-items: center;
-        text-align: center;
-    }
-
-    .actionButtonGroup {
-        align-self: stretch;
-        justify-content: center;
-    }
-
-    .main {
-        padding: 1rem;
-    }
-
-    .statsContainer {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .urlContent {
-        padding: 1.25rem;
-    }
-
-    .urlMeta {
-        flex-direction: column;
-        align-items: flex-start;
+        grid-template-columns: 1fr;
         gap: 0.75rem;
     }
 
     .sectionHeader {
         flex-direction: column;
-        gap: 0.75rem;
+        gap: 1rem;
         align-items: flex-start;
     }
 
-    .urlCount {
+    .urlCountBadge {
         align-self: flex-start;
     }
+}
+
+@media (max-width: 480px) {
+    .headerContent {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .actionsSection {
+        justify-content: center;
+    }
+
+    .mainLayout {
+        padding: 1rem;
+    }
+
+    .urlCard {
+        padding: 1.25rem;
+    }
+}
+
+:root {
+    --error: #ef4444;
+    --success: #22c55e;
 }
